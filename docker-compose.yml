@@ -1,0 +1,34 @@
+services:
+  bybit_api_grpc_server:
+    container_name: bybit_api_grpc_server
+#    environment:
+#      - APP_ENV=production
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "9001:9001"
+    command: ./main
+  bybit_history_grpc_server:
+    container_name: bybit_history_grpc_server
+#    environment:
+#      - APP_ENV=production
+    build:
+      context: .
+      dockerfile: Dockerfile.history
+    ports:
+      - "9002:9002"
+  bybiy_consumers_history:
+    container_name: bybiy_consumers_history
+#    environment:
+#      - APP_ENV=production
+    build:
+      context: .
+      dockerfile: Dockerfile.consumers
+  bybit_worker_update_data:
+    container_name: bybit_worker_update_data
+#    environment:
+#      - APP_ENV=production
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
