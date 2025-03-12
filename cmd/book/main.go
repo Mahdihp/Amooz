@@ -56,7 +56,7 @@ func setupServer(bookHandler *http.BookHandler, cfg config.Config) {
 	}))
 	app.Use(shared.JWTMiddleware)
 	// تنظیم روت‌ها
-	app.Post("/books", bookHandler.CreateBookHandler) // ایجاد کتاب
+	app.Post("/users", bookHandler.CreateBookHandler) // ایجاد کتاب
 	app.Get("/user", bookHandler.FindBookByIDHandler) // پیدا کردن کتاب با ID
 
 	// شروع سرور

@@ -22,7 +22,7 @@ func NewBookService(repo infrastructure.UserRepository) UserRepository {
 	return &UserService{repo: repo}
 }
 
-func (u UserService) Save(ctx context.Context, book *domain.User) error {
+func (u UserService) Save(ctx context.Context, user *domain.User) error {
 	//TODO implement me
 	panic("implement me")
 }
