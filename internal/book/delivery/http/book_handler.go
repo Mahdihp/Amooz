@@ -51,6 +51,6 @@ func (h *BookHandler) FindBookByIDHandler(c *fiber.Ctx) error {
 	if err != nil {
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"error": "book not found"})
 	}
-
+	panic("implement me")
 	return c.Status(fiber.StatusOK).JSON(book)
 }
