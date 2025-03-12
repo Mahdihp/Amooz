@@ -29,7 +29,7 @@ func init() {
 }
 func main() {
 	cfg := config.LoadConfig()
-	bookHandler := setupService()
+	bookHandler := setupService(cfg)
 	setupServer(bookHandler, cfg)
 }
 
@@ -76,12 +76,13 @@ func setupLogFile() *os.File {
 	return file
 }
 
-func setupService() *http.BookHandler {
+func setupService(cfg config.Config) *http.BookHandler {
+
 	// ایجاد مخزن کتاب و سرویس
-	bookRepo := infrastructure.NewUserRepository() // استفاده از UserRepository
-	bookService := application.NewBookService(bookRepo)
+	userRepository := infrastructure.NewUserRepository(cfg)
+	userService := application.NewBookService(userRepository)
 
 	// ایجاد هندلرهای HTTP
-	bookHandler := http.NewBookHandler(bookService)
+	bookHandler := http.NewBookHandler(userService)
 	return bookHandler
 }

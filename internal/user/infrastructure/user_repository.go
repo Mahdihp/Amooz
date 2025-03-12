@@ -14,13 +14,10 @@ type UserRepository struct {
 }
 
 // NewUserRepository سازنده برای UserRepository
-func NewUserRepository(cfg config.Config) *UserRepository {
-	newPostgres, err := postgres.NewPostgres(cfg, []interface{}{&domain.User{}})
-	if err != nil {
-		panic(err)
-	}
+func NewUserRepository(cfg config.Config) UserRepository {
+	newPostgres := postgres.NewPostgres(cfg, []interface{}{&domain.User{}})
 
-	return &UserRepository{
+	return UserRepository{
 		postgres: newPostgres,
 	}
 }

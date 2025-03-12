@@ -13,7 +13,7 @@ type PostgresDb struct {
 	Db *gorm.DB
 }
 
-func NewPostgres(cfg config.Config, tables []interface{}) (*PostgresDb, error) {
+func NewPostgres(cfg config.Config, tables []interface{}) *PostgresDb {
 	strConn := fmt.Sprintf("host=%s user=y%s password=%s dbname=%s port=%d sslmode=disable",
 		cfg.Postgres.Host, cfg.Postgres.User, cfg.Postgres.Pass, cfg.Postgres.DbName, cfg.Postgres.Port)
 	db, err := gorm.Open(postgres.Open(strConn), &gorm.Config{})
@@ -34,5 +34,5 @@ func NewPostgres(cfg config.Config, tables []interface{}) (*PostgresDb, error) {
 	// Migrate the schema
 	db.AutoMigrate(&tables)
 
-	return &PostgresDb{Db: db}, nil
+	return &PostgresDb{Db: db}
 }
