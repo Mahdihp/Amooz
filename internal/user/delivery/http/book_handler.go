@@ -1,8 +1,8 @@
 package http
 
 import (
-	"Amooz/internal/book/application"
-	"Amooz/internal/book/domain"
+	"Amooz/internal/user/application"
+	"Amooz/internal/user/domain"
 	"github.com/gofiber/fiber/v2"
 	"time"
 )
@@ -21,7 +21,7 @@ func NewBookHandler(service *application.BookService) *BookHandler {
 func (h *BookHandler) CreateBookHandler(c *fiber.Ctx) error {
 	var req struct {
 		Title       string    `json:"title"`
-		AuthorID    string    `json:"author_id"`
+		RoleID      int8      `json:"role_id"`
 		AuthorName  string    `json:"author_name"`
 		Publisher   string    `json:"publisher"`
 		PublishedAt time.Time `json:"published_at"`
@@ -31,12 +31,12 @@ func (h *BookHandler) CreateBookHandler(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": err.Error()})
 	}
 
-	author := domain.Author{
-		ID:   req.AuthorID,
+	role := domain.Role{
+		ID:   req.RoleID,
 		Name: req.AuthorName,
 	}
 
-	book, err := h.service.CreateBook(c.Context(), req.Title, author, req.Publisher, req.PublishedAt)
+	book, err := h.service.CreateBook(c.Context(), req.Title, role, req.Publisher, req.PublishedAt)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": err.Error()})
 	}
@@ -49,8 +49,7 @@ func (h *BookHandler) FindBookByIDHandler(c *fiber.Ctx) error {
 	id := c.Query("id")
 	book, err := h.service.FindBookByID(c.Context(), id)
 	if err != nil {
-		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"error": "book not found"})
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"error": "user not found"})
 	}
-	panic("implement me")
 	return c.Status(fiber.StatusOK).JSON(book)
 }

@@ -1,7 +1,7 @@
 package application
 
 import (
-	"Amooz/internal/book/domain"
+	"Amooz/internal/user/domain"
 	"context"
 	"errors"
 	"github.com/google/uuid"
@@ -10,8 +10,8 @@ import (
 
 // BookRepository اینترفیس برای مخزن کتاب‌ها
 type BookRepository interface {
-	Save(ctx context.Context, book *domain.Book) error
-	FindByID(ctx context.Context, id string) (*domain.Book, error)
+	Save(ctx context.Context, book *domain.User) error
+	FindByID(ctx context.Context, id string) (*domain.User, error)
 }
 
 // BookService سرویس مدیریت کتاب‌ها
@@ -25,11 +25,11 @@ func NewBookService(repo BookRepository) *BookService {
 }
 
 // CreateBook کتاب جدیدی ایجاد می‌کند
-func (s *BookService) CreateBook(ctx context.Context, title string, author domain.Author, publisher string, publishedAt time.Time) (*domain.Book, error) {
-	book := &domain.Book{
+func (s *BookService) CreateBook(ctx context.Context, title string, role domain.Role, publisher string, publishedAt time.Time) (*domain.User, error) {
+	book := &domain.User{
 		ID:          uuid.NewString(),
 		Title:       title,
-		Author:      author,
+		Role:        role,
 		Publisher:   publisher,
 		PublishedAt: publishedAt,
 	}
@@ -41,10 +41,10 @@ func (s *BookService) CreateBook(ctx context.Context, title string, author domai
 }
 
 // FindBookByID کتابی را با شناسه پیدا می‌کند
-func (s *BookService) FindBookByID(ctx context.Context, id string) (*domain.Book, error) {
+func (s *BookService) FindBookByID(ctx context.Context, id string) (*domain.User, error) {
 	book, err := s.repo.FindByID(ctx, id)
 	if err != nil {
-		return nil, errors.New("book not found")
+		return nil, errors.New("user not found")
 	}
 	return book, nil
 }

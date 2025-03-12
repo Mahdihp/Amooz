@@ -1,11 +1,12 @@
 package main
 
 import (
-	"Amooz/internal/book/application"
-	"Amooz/internal/book/delivery/http"
-	"Amooz/internal/book/infrastructure"
+	"Amooz/internal/user/application"
+	"Amooz/internal/user/delivery/http"
+	"Amooz/internal/user/infrastructure"
 	"Amooz/pkg/common"
 	"Amooz/pkg/config"
+	"Amooz/pkg/shared"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/healthcheck"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -53,10 +54,10 @@ func setupServer(bookHandler *http.BookHandler, cfg config.Config) {
 		},
 		LivenessEndpoint: "/healthcheck",
 	}))
-
+	app.Use(shared.JWTMiddleware)
 	// تنظیم روت‌ها
 	app.Post("/books", bookHandler.CreateBookHandler) // ایجاد کتاب
-	app.Get("/book", bookHandler.FindBookByIDHandler) // پیدا کردن کتاب با ID
+	app.Get("/user", bookHandler.FindBookByIDHandler) // پیدا کردن کتاب با ID
 
 	// شروع سرور
 	//log.Println("Starting server on :" + strconv.Itoa(cfg.AppServer.Port) + "...")
@@ -77,7 +78,7 @@ func setupLogFile() *os.File {
 
 func setupService() *http.BookHandler {
 	// ایجاد مخزن کتاب و سرویس
-	bookRepo := infrastructure.NewBookRepository() // استفاده از BookRepository
+	bookRepo := infrastructure.NewUserRepository() // استفاده از UserRepository
 	bookService := application.NewBookService(bookRepo)
 
 	// ایجاد هندلرهای HTTP

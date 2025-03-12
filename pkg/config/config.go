@@ -7,11 +7,22 @@ import (
 
 type Config struct {
 	AppServer AppServer
+	Postgres  Postgres
 	CronJob   CronJob
 }
 type AppServer struct {
 	Host string
 	Port int
+}
+type Postgres struct {
+	Host     string
+	DbName   string
+	User     string
+	Pass     string
+	Port     int
+	SSLMode  string
+	MaxConns int
+	MaxIdle  int
 }
 type CronJob struct {
 	CronJobIntervalCoinInfo         int
