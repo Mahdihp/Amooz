@@ -2,6 +2,7 @@ package shared
 
 import (
 	"Amooz/internal/user/domain"
+	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt"
 	"time"
@@ -46,11 +47,12 @@ func Authenticate(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{"token": token})
 }
 
-func JWTMiddleware(c *fiber.Ctx) error {
+func JwtMiddleware(c *fiber.Ctx) error {
 	tokenString := c.Get("Authorization")
 	if tokenString == "" {
 		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Token required"})
 	}
+	fmt.Println(tokenString)
 
 	token, err := jwt.ParseWithClaims(tokenString, &Claims{}, func(token *jwt.Token) (interface{}, error) {
 		return jwtKey, nil

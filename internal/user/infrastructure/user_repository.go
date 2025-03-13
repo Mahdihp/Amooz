@@ -15,10 +15,10 @@ type UserRepository struct {
 
 // NewUserRepository سازنده برای UserRepository
 func NewUserRepository(cfg config.Config) UserRepository {
-	newPostgres := postgres.NewPostgres(cfg, []interface{}{&domain.User{}})
+	//newPostgres := postgres.NewPostgres(cfg, []interface{}{&domain.User{}})
 
 	return UserRepository{
-		postgres: newPostgres,
+		postgres: nil,
 	}
 }
 

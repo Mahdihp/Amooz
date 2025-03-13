@@ -10,6 +10,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/healthcheck"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/joho/godotenv"
 	"log"
 	"os"
@@ -54,7 +55,10 @@ func setupServer(bookHandler *http.BookHandler, cfg config.Config) {
 		},
 		LivenessEndpoint: "/healthcheck",
 	}))
-	app.Use(shared.JWTMiddleware)
+
+	app.Use(shared.JwtMiddleware)
+	app.Use(recover.New())
+
 	// تنظیم روت‌ها
 	app.Post("/users", bookHandler.CreateBookHandler) // ایجاد کتاب
 	app.Get("/user", bookHandler.FindBookByIDHandler) // پیدا کردن کتاب با ID
