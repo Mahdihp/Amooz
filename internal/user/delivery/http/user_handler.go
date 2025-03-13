@@ -6,18 +6,18 @@ import (
 	"time"
 )
 
-// BookHandler نماینده هندلر برای درخواست‌های HTTP مربوط به کتاب‌ها است
-type BookHandler struct {
+// UserHandler نماینده هندلر برای درخواست‌های HTTP مربوط به کتاب‌ها است
+type UserHandler struct {
 	service application.UserRepository
 }
 
-// NewBookHandler سازنده BookHandler
-func NewBookHandler(service application.UserRepository) *BookHandler {
-	return &BookHandler{service: service}
+// NewUserHandler سازنده UserHandler
+func NewUserHandler(service application.UserRepository) *UserHandler {
+	return &UserHandler{service: service}
 }
 
 // CreateBookHandler برای ایجاد یک کتاب جدید
-func (h *BookHandler) CreateBookHandler(c *fiber.Ctx) error {
+func (h *UserHandler) CreateBookHandler(c *fiber.Ctx) error {
 	var req struct {
 		Title       string    `json:"title"`
 		RoleID      int8      `json:"role_id"`
@@ -44,7 +44,7 @@ func (h *BookHandler) CreateBookHandler(c *fiber.Ctx) error {
 }
 
 // FindBookByIDHandler برای پیدا کردن یک کتاب با ID
-func (h *BookHandler) FindBookByIDHandler(c *fiber.Ctx) error {
+func (h *UserHandler) FindBookByIDHandler(c *fiber.Ctx) error {
 	//id := c.Query("id")
 	//user, err := h.service.FindBookByID(c.Context(), id)
 	//if err != nil {

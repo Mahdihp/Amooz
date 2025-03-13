@@ -1,10 +1,7 @@
 package main
 
 import (
-	"Amooz/internal/user/application"
-	"Amooz/internal/user/delivery/http"
 	"Amooz/internal/user/delivery/router"
-	"Amooz/internal/user/infrastructure"
 	"Amooz/pkg/common"
 	"Amooz/pkg/config"
 	"Amooz/pkg/shared"
@@ -31,11 +28,10 @@ func init() {
 }
 func main() {
 	cfg := config.LoadConfig()
-	bookHandler := setupService(cfg)
-	setupServer(bookHandler, cfg)
+	setupHttpServer(cfg)
 }
 
-func setupServer(userHandler *http.BookHandler, cfg config.Config) {
+func setupHttpServer(cfg config.Config) {
 	// ایجاد برنامه Fiber
 	app := fiber.New(fiber.Config{
 		Prefork:       true,
@@ -67,8 +63,8 @@ func setupServer(userHandler *http.BookHandler, cfg config.Config) {
 	app.Use(shared.JwtMiddleware)
 	app.Use(recover.New())
 
-	// تنظیم روت‌ها
-	router.SetupRoutes(app, userHandler)
+	//Setup Service
+	router.SetupService(cfg, app)
 
 	// شروع سرور
 	//log.Println("Starting server on :" + strconv.Itoa(cfg.AppServer.Port) + "...")
@@ -85,15 +81,4 @@ func setupLogFile() *os.File {
 	}
 
 	return file
-}
-
-func setupService(cfg config.Config) *http.BookHandler {
-
-	// ایجاد مخزن کتاب و سرویس
-	userRepository := infrastructure.NewUserRepository(cfg)
-	userService := application.NewBookService(userRepository)
-
-	// ایجاد هندلرهای HTTP
-	bookHandler := http.NewBookHandler(userService)
-	return bookHandler
 }

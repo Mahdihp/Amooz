@@ -1,12 +1,27 @@
 package router
 
 import (
+	"Amooz/internal/user/application"
 	"Amooz/internal/user/delivery/http"
+	"Amooz/internal/user/infrastructure"
+	"Amooz/pkg/config"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
-func SetupRoutes(app *fiber.App, handler *http.BookHandler) {
+func SetupService(cfg config.Config, app *fiber.App) {
+	// ایجاد مخزن کتاب و سرویس
+	userRepository := infrastructure.NewUserRepository(cfg)
+	userService := application.NewBookService(userRepository)
+
+	// ایجاد هندلرهای HTTP
+	userHandler := http.NewUserHandler(userService)
+
+	// تنظیم روت‌ها
+	setupRoutes(app, userHandler)
+}
+
+func setupRoutes(app *fiber.App, handler *http.UserHandler) {
 	// Middleware
 	api := app.Group("/api", logger.New())
 

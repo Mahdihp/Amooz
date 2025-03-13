@@ -65,3 +65,4 @@
 13:27:23 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
 13:27:23 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
 13:27:23 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+16:36:21 | 401 |            0s | 127.0.0.1 | GET | /book | -
