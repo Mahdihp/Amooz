@@ -59,3 +59,9 @@
 13:26:14 | 404 |            0s | 127.0.0.1 | GET | /favicon.ico | Cannot GET /favicon.ico
 13:26:14 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
 13:26:14 | 404 |            0s | 127.0.0.1 | GET | /favicon.ico | Cannot GET /favicon.ico
+13:27:22 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:27:22 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:27:23 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:27:23 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:27:23 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:27:23 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
