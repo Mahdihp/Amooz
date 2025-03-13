@@ -34,3 +34,28 @@
 16:23:23 | 200 |            0s | 127.0.0.1 | GET | /healthcheck | -
 16:24:38 | 200 |            0s | 127.0.0.1 | GET | /healthcheck | -
 11:04:21 | 401 |       998.2µs | 127.0.0.1 | GET | /book | -
+12:09:33 | 401 |       509.7µs | 127.0.0.1 | GET | /book | -
+12:14:51 | 401 |       633.2µs | 127.0.0.1 | GET | /book | -
+12:15:14 | 401 |            0s | 127.0.0.1 | GET | /book | -
+12:15:25 | 401 |            0s | 127.0.0.1 | GET | /book | -
+12:50:07 | 401 |       720.8µs | 127.0.0.1 | GET | /book | -
+12:53:19 | 401 |            0s | 127.0.0.1 | GET | /book | -
+13:25:31 | 401 |       661.9µs | 127.0.0.1 | GET | /swagger/index.html | -
+13:25:31 | 401 |            0s | 127.0.0.1 | GET | /favicon.ico | -
+13:25:50 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:25:50 | 404 |            0s | 127.0.0.1 | GET | /favicon.ico | Cannot GET /favicon.ico
+13:25:51 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:25:52 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:25:52 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:25:53 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:25:53 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:25:55 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:25:56 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:26:12 | 404 |       549.4µs | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:26:13 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:26:14 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:26:14 | 404 |            0s | 127.0.0.1 | GET | /favicon.ico | Cannot GET /favicon.ico
+13:26:14 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:26:14 | 404 |            0s | 127.0.0.1 | GET | /favicon.ico | Cannot GET /favicon.ico
+13:26:14 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
+13:26:14 | 404 |            0s | 127.0.0.1 | GET | /favicon.ico | Cannot GET /favicon.ico

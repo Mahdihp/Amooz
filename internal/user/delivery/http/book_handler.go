@@ -35,20 +35,20 @@ func (h *BookHandler) CreateBookHandler(c *fiber.Ctx) error {
 	//	Name: req.AuthorName,
 	//}
 	//h.service.Save()
-	//book, err := h.service.CreateBook(c.Context(), req.Title, role, req.Publisher, req.PublishedAt)
+	//user, err := h.service.CreateBook(c.Context(), req.Title, role, req.Publisher, req.PublishedAt)
 	//if err != nil {
 	//	return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": err.Error()})
 	//}
 
-	return c.Status(fiber.StatusCreated).JSON("book")
+	return c.Status(fiber.StatusCreated).JSON("user")
 }
 
 // FindBookByIDHandler برای پیدا کردن یک کتاب با ID
 func (h *BookHandler) FindBookByIDHandler(c *fiber.Ctx) error {
 	//id := c.Query("id")
-	//book, err := h.service.FindBookByID(c.Context(), id)
+	//user, err := h.service.FindBookByID(c.Context(), id)
 	//if err != nil {
 	//	return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"error": "user not found"})
 	//}
-	return c.Status(fiber.StatusOK).JSON("book")
+	return c.Status(fiber.StatusOK).JSON("user")
 }

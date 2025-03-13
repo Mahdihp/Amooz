@@ -3,6 +3,7 @@ package main
 import (
 	"Amooz/internal/user/application"
 	"Amooz/internal/user/delivery/http"
+	"Amooz/internal/user/delivery/router"
 	"Amooz/internal/user/infrastructure"
 	"Amooz/pkg/common"
 	"Amooz/pkg/config"
@@ -34,9 +35,15 @@ func main() {
 	setupServer(bookHandler, cfg)
 }
 
-func setupServer(bookHandler *http.BookHandler, cfg config.Config) {
+func setupServer(userHandler *http.BookHandler, cfg config.Config) {
 	// ایجاد برنامه Fiber
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		Prefork:       true,
+		CaseSensitive: false,
+		StrictRouting: false,
+		ServerHeader:  "Mahdi & Mojtaba 👋",
+		AppName:       "Amooz",
+	})
 
 	app.Use(logger.New(logger.Config{
 		// For more options, see the Config section
@@ -48,6 +55,7 @@ func setupServer(bookHandler *http.BookHandler, cfg config.Config) {
 	app.Use(logger.New(logger.Config{
 		Output: file,
 	}))
+
 	app.Use(healthcheck.New(healthcheck.Config{
 		LivenessProbe: func(c *fiber.Ctx) bool {
 			c.JSON(fiber.Map{"status": time.Now().Format(time.RFC3339)})
@@ -60,8 +68,7 @@ func setupServer(bookHandler *http.BookHandler, cfg config.Config) {
 	app.Use(recover.New())
 
 	// تنظیم روت‌ها
-	app.Post("/users", bookHandler.CreateBookHandler) // ایجاد کتاب
-	app.Get("/user", bookHandler.FindBookByIDHandler) // پیدا کردن کتاب با ID
+	router.SetupRoutes(app, userHandler)
 
 	// شروع سرور
 	//log.Println("Starting server on :" + strconv.Itoa(cfg.AppServer.Port) + "...")
