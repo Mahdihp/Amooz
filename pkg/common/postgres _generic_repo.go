@@ -1,9 +1,5 @@
 package common
 
-import (
-	"Amooz/database/postgres"
-)
-
 const (
 	SearchParamsType_Integer  string = "integer"
 	SearchParamsType_String   string = "string"
@@ -23,5 +19,5 @@ type IGenericRepository[T any] interface {
 	//FindAll(params []SearchParams, pageIndex, pageSize int) ([]T, error)
 }
 type GenericRepository[T any] struct {
-	postgres *postgres.PostgresDb
+	//postgres *postgres.PostgresDb
 }

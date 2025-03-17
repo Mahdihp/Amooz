@@ -4,7 +4,6 @@ import (
 	"Amooz/database/postgres"
 	"Amooz/internal/user/domain"
 	"Amooz/pkg/config"
-	"time"
 )
 
 type IUserRepository interface {
@@ -28,7 +27,7 @@ func NewUserRepository(cfg config.Config) IUserRepository {
 
 func (r *UserRepositoryImpl) Update(user domain.User) error {
 	tx := r.postgres.Db.Model(&user).Updates(domain.User{DisplayName: user.DisplayName,
-		Password: user.Password, UpdatedAt: time.Now().UnixMilli()})
+		Password: user.Password})
 	if tx.Error != nil {
 		return tx.Error
 	}
@@ -37,7 +36,7 @@ func (r *UserRepositoryImpl) Update(user domain.User) error {
 
 func (r *UserRepositoryImpl) SoftDelete(user domain.User) error {
 	tx := r.postgres.Db.Model(&user).
-		Updates(domain.User{Deleted: true, UpdatedAt: time.Now().UnixMilli()})
+		Updates(domain.User{Deleted: true})
 	if tx.Error != nil {
 		return tx.Error
 	}

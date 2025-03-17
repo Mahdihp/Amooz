@@ -71,9 +71,9 @@ func JwtMiddleware(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Invalid token"})
 }
 
-func Protected() fiber.Handler {
+func Protected(cfg config.AppServer) fiber.Handler {
 	return jwtware.New(jwtware.Config{
-		SigningKey:   jwtware.SigningKey{Key: []byte(config.GetConfig("SECRET"))},
+		SigningKey:   jwtware.SigningKey{Key: []byte(cfg.AppSecret)},
 		ErrorHandler: jwtError,
 	})
 }

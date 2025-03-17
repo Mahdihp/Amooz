@@ -5,6 +5,7 @@ import (
 	"Amooz/internal/user/delivery/http"
 	"Amooz/internal/user/infrastructure"
 	"Amooz/pkg/config"
+	"Amooz/pkg/shared"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 )
@@ -18,15 +19,15 @@ func SetupService(cfg config.Config, app *fiber.App) {
 	userHandler := http.NewUserHandler(userService)
 
 	// تنظیم روت‌ها
-	setupRoutes(app, userHandler)
+	setupRoutes(app, userHandler, cfg.AppServer)
 }
 
-func setupRoutes(app *fiber.App, handler *http.UserHandler) {
+func setupRoutes(app *fiber.App, handler *http.UserHandler, cfg config.AppServer) {
 	// Middleware
 	api := app.Group("/api", logger.New())
 
-	api.Post("/users", handler.CreateBookHandler) // ایجاد کتاب
-	api.Get("/user", handler.FindBookByIDHandler) // پیدا کردن کتاب با ID
+	api.Post("/users", handler.CreateBookHandler)                        // ایجاد کتاب
+	api.Get("/user", shared.Protected(cfg), handler.FindBookByIDHandler) // پیدا کردن کتاب با ID
 
 	//api.Get("/", handler.Hello)
 

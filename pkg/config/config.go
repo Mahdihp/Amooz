@@ -13,8 +13,9 @@ type Config struct {
 	CronJob   CronJob
 }
 type AppServer struct {
-	Host string
-	Port int
+	Host      string
+	Port      int
+	AppSecret string
 }
 type Postgres struct {
 	Host     string
@@ -55,6 +56,7 @@ func LoadConfig() Config {
 	var c Config
 
 	c.AppServer.Host = os.Getenv("APP_HOST")
+	c.AppServer.AppSecret = os.Getenv("AppSecret")
 	numberCfg, _ := strconv.Atoi(os.Getenv("APP_PORT"))
 	c.AppServer.Port = numberCfg
 
