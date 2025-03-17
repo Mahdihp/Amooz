@@ -26,8 +26,8 @@ func setupRoutes(app *fiber.App, handler *http.UserHandler, cfg config.AppServer
 	// Middleware
 	api := app.Group("/api", logger.New())
 
-	api.Post("/users", handler.CreateBookHandler)                        // ایجاد کتاب
-	api.Get("/user", shared.Protected(cfg), handler.FindBookByIDHandler) // پیدا کردن کتاب با ID
+	api.Post("/users", handler.CreateBookHandler)
+	api.Get("/user", shared.Protected(cfg), handler.FindBookByIDHandler)
 
 	//api.Get("/", handler.Hello)
 
