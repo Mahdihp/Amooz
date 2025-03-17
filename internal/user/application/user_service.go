@@ -14,11 +14,11 @@ type UserRepository interface {
 
 // UserService سرویس مدیریت کتاب‌ها
 type UserService struct {
-	repo infrastructure.UserRepository
+	repo infrastructure.IUserRepository
 }
 
 // NewBookService سازنده UserService
-func NewBookService(repo infrastructure.UserRepository) UserRepository {
+func NewBookService(repo infrastructure.IUserRepository) UserRepository {
 	return &UserService{repo: repo}
 }
 

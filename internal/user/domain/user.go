@@ -1,6 +1,5 @@
 package domain
 
-// User نماینده یک کتاب در سیستم است
 type User struct {
 	ID        int64 `json:"ID,omitempty" gorm:"primaryKey"`
 	CreatedAt int64 `json:"createdAt"`
@@ -11,4 +10,5 @@ type User struct {
 	Password    string `json:"password" gorm:"type:varchar(255);not null"`
 	Deleted     bool   `json:"deleted"`
 	Roles       []Role `json:"roles" gorm:"many2many:user_roles;"`
+	Posts       []Post `json:"posts" gorm:"foreignKey:UserID"`
 }

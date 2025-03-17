@@ -3,18 +3,12 @@ package common
 //type Collection string
 
 const (
-	Exchnage_Bybit   string = "bybit"
-	Exchnage_Chainup string = "chainup"
-
-	Collection_CryptoCurrency     string = "CryptoCurrency"
-	Collection_FearGreed          string = "FearGreed"
-	Collection_CoinMarketCapMap   string = "CoinMarketCapMap"
-	Collection_ListingsLatest_CMC string = "ListingsLatestCMC"
-	Collection_BullishBearish     string = "BullishBearish"
-	Collection_PairSpot           string = "PairSpot"
-	Collection_TrendingLatest     string = "TrendingLatest"
-	Collection_LocalCurrency      string = "LocalCurrency"
-	Collection_CryptoInfo         string = "CryptoInfo"
+	KEY_ROLE_ADMIN string = "ADMIN"
+	KEY_ROLE_USER  string = "USER"
+)
+const (
+	Collection_CryptoCurrency string = "CryptoCurrency"
+	Collection_FearGreed      string = "FearGreed"
 )
 
 const (

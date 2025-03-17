@@ -22,7 +22,6 @@ type Postgres struct {
 	User     string
 	Pass     string
 	Port     int
-	SSLMode  string
 	MaxConns int
 	MaxIdle  int
 }
@@ -59,6 +58,19 @@ func LoadConfig() Config {
 	numberCfg, _ := strconv.Atoi(os.Getenv("APP_PORT"))
 	c.AppServer.Port = numberCfg
 
+	c.Postgres.Host = os.Getenv("POSTGRES_HOST")
+	c.Postgres.DbName = os.Getenv("POSTGRES_DB")
+	c.Postgres.User = os.Getenv("POSTGRES_USER")
+	c.Postgres.Pass = os.Getenv("POSTGRES_PASSWORD")
+
+	numberCfg, _ = strconv.Atoi(os.Getenv("POSTGRES_PORT"))
+	c.Postgres.Port = numberCfg
+
+	numberCfg, _ = strconv.Atoi(os.Getenv("POSTGRES_MAX_CONN"))
+	c.Postgres.MaxConns = numberCfg
+
+	numberCfg, _ = strconv.Atoi(os.Getenv("POSTGRES_MAX_IDLE"))
+	c.Postgres.MaxIdle = numberCfg
 	return c
 }
 
