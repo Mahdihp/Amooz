@@ -4,7 +4,6 @@ import (
 	"Amooz/internal/user/delivery/router"
 	"Amooz/pkg/common"
 	"Amooz/pkg/config"
-	"Amooz/pkg/shared"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/healthcheck"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -60,7 +59,7 @@ func setupHttpServer(cfg config.Config) {
 		LivenessEndpoint: "/healthcheck",
 	}))
 
-	app.Use(shared.JwtMiddleware)
+	//app.Use(shared.JwtMiddleware)
 	app.Use(recover.New())
 
 	//Setup Service

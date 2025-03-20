@@ -26,7 +26,7 @@ func setupRoutes(app *fiber.App, handler *http.UserHandler, cfg config.AppServer
 	// Middleware
 	api := app.Group("/api", logger.New())
 
-	api.Post("/users", handler.CreateBookHandler)
+	api.Get("/users", handler.GetAll)
 	api.Get("/user", shared.Protected(cfg), handler.FindBookByIDHandler)
 
 	//api.Get("/", handler.Hello)

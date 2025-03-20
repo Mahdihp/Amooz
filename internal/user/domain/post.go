@@ -7,5 +7,5 @@ type Post struct {
 
 	Title   string `json:"title,omitempty"`
 	Deleted bool   `json:"deleted"`
-	UserID  uint   `json:"userID"`
+	UserID  int64  `json:"userID"`
 }

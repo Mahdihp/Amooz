@@ -54,11 +54,17 @@ func seedData(db *gorm.DB) {
 		role := domain.Role{
 			Name: common.KEY_ROLE_ADMIN,
 		}
-		db.Create(&domain.User{
+		user := domain.User{
 			Username: "mahdi",
 			Password: "123456",
 			Deleted:  false,
 			Roles:    []domain.Role{role},
-		})
+		}
+		db.Create(&user)
+		post := domain.Post{
+			Title:  "Test Post",
+			UserID: user.ID,
+		}
+		db.Create(&post)
 	}
 }

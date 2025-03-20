@@ -66,3 +66,33 @@
 13:27:23 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
 13:27:23 | 404 |            0s | 127.0.0.1 | GET | /swagger/index.html | Cannot GET /swagger/index.html
 16:36:21 | 401 |            0s | 127.0.0.1 | GET | /book | -
+13:14:20 | 401 |            0s | 127.0.0.1 | GET | /users | -
+13:14:20 | 401 |            0s | 127.0.0.1 | GET | /favicon.ico | -
+13:14:55 | 404 |        62.1µs | 127.0.0.1 | GET | /users | Cannot GET /users
+13:14:55 | 404 |            0s | 127.0.0.1 | GET | /favicon.ico | Cannot GET /favicon.ico
+13:15:11 | 400 |      5.4486ms | 127.0.0.1 | GET | /api/users | -
+13:15:18 | 400 |      4.4461ms | 127.0.0.1 | GET | /api/users | -
+13:15:21 | 400 |      2.5275ms | 127.0.0.1 | GET | /api/users | -
+13:19:33 | 404 |      4.0097ms | 127.0.0.1 | GET | /api/users | -
+13:19:35 | 404 |       3.981ms | 127.0.0.1 | GET | /api/users | -
+13:19:36 | 404 |      6.9478ms | 127.0.0.1 | GET | /api/users | -
+13:20:11 | 400 |      4.9831ms | 127.0.0.1 | GET | /api/users | -
+13:22:54 | 400 |      5.3493ms | 127.0.0.1 | GET | /api/users | -
+13:24:52 | 400 |      3.8955ms | 127.0.0.1 | GET | /api/users | -
+13:24:53 | 400 |      3.0553ms | 127.0.0.1 | GET | /api/users | -
+13:25:12 | 400 |      2.2649ms | 127.0.0.1 | GET | /api/users | -
+13:26:14 | 400 |      5.5652ms | 127.0.0.1 | GET | /api/users | -
+13:27:46 | 400 |      4.9841ms | 127.0.0.1 | GET | /api/users | -
+13:28:31 | 400 |      5.7136ms | 127.0.0.1 | GET | /api/users | -
+13:28:35 | 400 |      5.5835ms | 127.0.0.1 | GET | /api/users | -
+13:28:55 | 400 |      4.8782ms | 127.0.0.1 | GET | /api/users | -
+13:28:57 | 400 |      4.9306ms | 127.0.0.1 | GET | /api/users | -
+13:28:57 | 404 |       969.7µs | 127.0.0.1 | GET | /favicon.ico | Cannot GET /favicon.ico
+13:30:30 | 400 |     15.2196ms | 127.0.0.1 | GET | /api/users | -
+13:30:58 | 400 |      5.1811ms | 127.0.0.1 | GET | /api/users | -
+13:31:24 | 400 |      5.5458ms | 127.0.0.1 | GET | /api/users | -
+13:31:54 | 400 |      6.1775ms | 127.0.0.1 | GET | /api/users | -
+13:31:56 | 400 |      4.5482ms | 127.0.0.1 | GET | /api/users | -
+13:31:56 | 404 |            0s | 127.0.0.1 | GET | /favicon.ico | Cannot GET /favicon.ico
+13:33:21 | 400 |     10.7403ms | 127.0.0.1 | GET | /api/users | -
+13:33:24 | 400 |      2.7473ms | 127.0.0.1 | GET | /api/users | -

@@ -12,6 +12,7 @@ type IUserRepository interface {
 	Delete(user domain.User) error
 	SoftDelete(user domain.User) error
 	FindByID(userId int64) (domain.User, error)
+	FindAll() ([]domain.User, error)
 }
 
 type UserRepositoryImpl struct {
@@ -65,4 +66,15 @@ func (r *UserRepositoryImpl) FindByID(userId int64) (domain.User, error) {
 		return domain.User{}, tx.Error
 	}
 	return user, nil
+}
+func (r *UserRepositoryImpl) FindAll() ([]domain.User, error) {
+	var users []domain.User
+	tx := r.postgres.Db.Find(&users)
+	//err := r.postgres.Db.Model(&domain.User{}).
+	//	Preload("Posts").Find(&users).Error
+
+	if tx.Error != nil {
+		return []domain.User{}, tx.Error
+	}
+	return users, nil
 }
