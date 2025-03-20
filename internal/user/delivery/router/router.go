@@ -13,7 +13,7 @@ import (
 func SetupService(cfg config.Config, app *fiber.App) {
 	// ایجاد مخزن کتاب و سرویس
 	userRepository := infrastructure.NewUserRepository(cfg)
-	userService := application.NewBookService(userRepository)
+	userService := application.NewUserService(userRepository)
 
 	// ایجاد هندلرهای HTTP
 	userHandler := http.NewUserHandler(userService)

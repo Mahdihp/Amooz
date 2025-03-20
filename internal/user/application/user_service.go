@@ -13,30 +13,29 @@ type IUserService interface {
 	FindAll(ctx context.Context) ([]domain.User, error)
 }
 
-// UserService سرویس مدیریت کتاب‌ها
-type UserService struct {
+// UserServiceImpl سرویس مدیریت کتاب‌ها
+type UserServiceImpl struct {
 	repo infrastructure.IUserRepository
 }
 
-func (u UserService) Save(ctx context.Context, book *domain.User) error {
+func NewUserService(repo infrastructure.IUserRepository) IUserService {
+	return UserServiceImpl{repo: repo}
+}
+
+func (u UserServiceImpl) Save(ctx context.Context, book *domain.User) error {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (u UserService) FindByID(ctx context.Context, id string) (domain.User, error) {
+func (u UserServiceImpl) FindByID(ctx context.Context, id string) (domain.User, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (u UserService) FindAll(ctx context.Context) ([]domain.User, error) {
+func (u UserServiceImpl) FindAll(ctx context.Context) ([]domain.User, error) {
 	all, err := u.repo.FindAll()
 	if err != nil {
 		return []domain.User{}, err
 	}
 	return all, nil
-}
-
-// NewBookService سازنده UserService
-func NewBookService(repo infrastructure.IUserRepository) IUserService {
-	return UserService{repo: repo}
 }
