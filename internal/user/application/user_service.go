@@ -16,13 +16,11 @@ type IUserService interface {
 // UserServiceImpl سرویس مدیریت کتاب‌ها
 type UserServiceImpl struct {
 	userRepository infrastructure.IUserRepository
-	validator      infrastructure.IValidatorRepository
 }
 
 func NewUserService(repo infrastructure.IUserRepository) IUserService {
 	return UserServiceImpl{
 		userRepository: repo,
-		validator:      infrastructure.NewValidator(),
 	}
 }
 

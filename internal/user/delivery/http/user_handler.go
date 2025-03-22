@@ -2,16 +2,21 @@ package http
 
 import (
 	"Amooz/internal/user/application"
+	"Amooz/internal/user/infrastructure"
 	"github.com/gofiber/fiber/v2"
 )
 
 // UserHandler نماینده هندلر برای درخواست‌های HTTP مربوط به کتاب‌ها است
 type UserHandler struct {
 	userService application.IUserService
+	validator   infrastructure.IValidatorRepository
 }
 
 func NewUserHandler(service application.IUserService) *UserHandler {
-	return &UserHandler{userService: service}
+	return &UserHandler{
+		userService: service,
+		validator:   infrastructure.NewValidator(),
+	}
 }
 
 func (h *UserHandler) GetAll(c *fiber.Ctx) error {
