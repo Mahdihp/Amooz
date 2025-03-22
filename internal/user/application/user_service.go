@@ -15,11 +15,15 @@ type IUserService interface {
 
 // UserServiceImpl سرویس مدیریت کتاب‌ها
 type UserServiceImpl struct {
-	repo infrastructure.IUserRepository
+	userRepository infrastructure.IUserRepository
+	validator      infrastructure.IValidatorRepository
 }
 
 func NewUserService(repo infrastructure.IUserRepository) IUserService {
-	return UserServiceImpl{repo: repo}
+	return UserServiceImpl{
+		userRepository: repo,
+		validator:      infrastructure.NewValidator(),
+	}
 }
 
 func (u UserServiceImpl) Save(ctx context.Context, book *domain.User) error {
@@ -33,7 +37,7 @@ func (u UserServiceImpl) FindByID(ctx context.Context, id string) (domain.User, 
 }
 
 func (u UserServiceImpl) FindAll(ctx context.Context) ([]domain.User, error) {
-	all, err := u.repo.FindAll()
+	all, err := u.userRepository.FindAll()
 	if err != nil {
 		return []domain.User{}, err
 	}
